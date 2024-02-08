@@ -1,9 +1,8 @@
 #include <iostream>
 
 using namespace std;
-#define n = 5;
 
-typedef struct{
+typedef struct {
     string nome;
     string autor;
     string ano;
@@ -12,7 +11,7 @@ typedef struct{
 
 } Musicas;
 
-void insere(Musicas musica) {
+void insere(Musicas *musica) {
     cout << "Nome da musica: ";
     cin >> musica->nome;
     cout << endl;
@@ -30,7 +29,7 @@ void insere(Musicas musica) {
     cout << endl;
 }
 
-void imprime(Musicas musica) {
+void imprime(Musicas *musica) {
     cout << "Nome da musica: " << musica->nome << endl;
     cout << "Nome do autor: " << musica->autor << endl;
     cout << "Ano na musica: " << musica->ano << endl;
@@ -38,29 +37,28 @@ void imprime(Musicas musica) {
     cout << "Nome do album: " << musica->album << endl;
 }
 
-int main(){
+int main() {
     int p;
-    Musicas musica[n];
-    do{
+    Musicas *musica = new Musicas(); // Alocação dinâmica
+    do {
         cout << "Bem vindo ao banco de musicas!!!" << endl;
         cout << "Digite o numero referente a tarefa que deseja." << endl;
         cout << "1- Imprimir todas as musicas" << endl;
         cout << "2- inserir nova musica" << endl;
 
-        switch (p)
-        {
-        case 1:
-            break;
-            imprime(musica);
-        case 2:
-            insere(musica);
-            break;
-        case 6:
-            break;
-        default:
-            break;
+        switch (p) {
+            case 1:
+                imprime(musica); 
+                break;
+            case 2:
+                insere(musica); 
+                break;
+            default:
+                break;
         }
-    }while (p == 6);
-    
-    
+    } while (p != 6);
+
+    delete musica; 
+
+    return 0;
 }
