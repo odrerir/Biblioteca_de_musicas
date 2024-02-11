@@ -57,8 +57,7 @@ void mergeSort(Musicas *v, int inicio, int fim) {
 }
 
 // Função para imprimir as músicas
-void imprime(Musicas *musicas, int size) {
-    for (int i = 0; i < size; ++i) {
+void imprime(Musicas *musicas, int i) {
         cout << "Musica numero " << i + 1 << endl;
         cout << "Nome da musica: " << musicas[i].nome << endl;
         cout << "Nome do autor: " << musicas[i].autor << endl;
@@ -67,19 +66,22 @@ void imprime(Musicas *musicas, int size) {
         cout << "Nome do album: " << musicas[i].album << endl;
         cout << endl;
         cout << endl;
-    }
 }
 
 // Função para busca binária em arr[] pelo ID da música
 int buscaPorId(const Musicas *v, int id, int inicio, int fim) {
-    while (inicio <= fim) {
-        int m = inicio + (fim - inicio) / 2;
-        if (v[m].id == id)
-            return m;
-        if (v[m].id < id)
-            inicio = m + 1;
-        else
-            fim = m - 1;
+    while(inicio <= fim){ //Condição de parada
+    //calcula o meio do sub-vetor
+    int i = (inicio + fim) / 2;
+    if (v[i].id == id){
+        return id; //Item encontrado
+    }
+    if (v[i].id < id){
+    inicio = id+1; //Item está no sub-vetor à direita
+    }
+    else{
+        fim = i; //v[i] > x //Item está no sub-vetor à esquerda
+    }
     }
     return -1;
 }
@@ -126,8 +128,9 @@ int main() {
     int opcao;
 
     do {
-        cout << "Bem vindo ao banco de musicas!!!" << endl;
+        cout << "_________Bem vindo ao banco de musicas!!!_________" << endl;
         cout << "Digite o numero referente a tarefa que deseja." << endl;
+        cout << endl;
         cout << "1- Imprimir todas as musicas" << endl;
         cout << "2- Inserir nova musica" << endl;
         cout << "3- Buscar musica pelo ID" << endl;
@@ -139,7 +142,9 @@ int main() {
             case 1:
                 if (size > 0) {
                     cout << "Listando todas as musicas:" << endl;
-                    imprime(musicas, size);
+                    for (int i = 0; i < size; ++i) {
+                        imprime(musicas,i);
+                    }
                 } else {
                     cout << "Nenhuma musica para imprimir." << endl;
                     cout << endl;
