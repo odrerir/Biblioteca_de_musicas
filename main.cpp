@@ -59,7 +59,6 @@ void mergeSort(Musicas *v, int inicio, int fim) {
 // Função para imprimir as músicas
 void imprime(Musicas *musicas, int i) {
         cout << "------------------------------------"<<endl;
-
         cout << "Musica numero " << i + 1 << endl;
         cout << "Nome da musica: " << musicas[i].nome << endl;
         cout << "Nome do autor: " << musicas[i].autor << endl;
@@ -67,7 +66,7 @@ void imprime(Musicas *musicas, int i) {
         cout << "Genero da musica: " << musicas[i].genero << endl;
         cout << "Nome do album: " << musicas[i].album << endl;
         cout << "------------------------------------"<<endl;
-        cout << endl;
+        cout << endl;  
 }
 
 // Função para busca binária em arr[] pelo ID da música
