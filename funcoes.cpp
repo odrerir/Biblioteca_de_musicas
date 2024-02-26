@@ -100,7 +100,7 @@ bool validaInt(const string &input) {
 }
 
 // Função para inserir uma nova música
-void insereMusica(Musicas *&musicas, Musicas *novaMusica, int &size) {
+void insereMusica(Musicas *musicas, Musicas *novaMusica, int &size) {
 
     // Alocando novo espaço para a música
     Musicas *temp = new Musicas[size + 1];
