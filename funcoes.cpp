@@ -11,16 +11,6 @@ typedef struct {
     string album;
 } Musicas;
 
-// Função para realizar o Merge Sort
-void mergeSort(Musicas *v, int inicio, int fim) {
-    if (inicio < (fim - 1)) {
-        int meio = (inicio + fim) / 2;
-        mergeSort(v, inicio, meio);
-        mergeSort(v, meio, fim);
-        intercala(v, inicio, meio, fim);
-    }
-}
-
 // Função para mesclar dois subvetores
 void intercala(Musicas *v, int inicio, int meio, int fim) {
     Musicas *w;
@@ -45,6 +35,16 @@ void intercala(Musicas *v, int inicio, int meio, int fim) {
         v[inicio + k] = w[k];
     }
     delete[] w;
+}
+
+// Função para realizar o Merge Sort
+void mergeSort(Musicas *v, int inicio, int fim) {
+    if (inicio < (fim - 1)) {
+        int meio = (inicio + fim) / 2;
+        mergeSort(v, inicio, meio);
+        mergeSort(v, meio, fim);
+        intercala(v, inicio, meio, fim);
+    }
 }
 
 // Função para imprimir as músicas
